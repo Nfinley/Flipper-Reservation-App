@@ -1,0 +1,183 @@
+<!--
+ * Program: tables.html
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Flipper Restaurant </title>
+
+		<!-- Include meta viewport tag to give browser instructions on how to control page dimensions/scaling -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Latest Bootstrap compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Customized stylesheet -->
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+		<!-- Google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Anton|Bungee|Fjalla+One|Orbitron|Ravi+Prakash|Russo+One" rel="stylesheet">
+	</head>
+
+	<body>
+		<!-- Big Page Heading -->
+		<div class="jumbotron">
+  			<div class="container text-center">
+    			<h1> Flipper Restaurant </h1>
+    			<hr>
+    			<h4>We have 7 tables and only 6 chairs.  You better get on it!</h4>
+    			<br>
+    			<div class="text-center">
+    				<!-- we flip it, you take it
+    				<a href="/tables">
+    					<button type="button" class="btn btn-lg btn-primary btn-purple">
+    						<span class="glyphicon glyphicon-list-alt"></span>
+    						View Tables
+    					</button>
+    				</a>-->
+    				<a href="/reserve">
+    					<button type="button" class="btn btn-lg btn-primary btn-purple">
+    						<span class="glyphicon glyphicon-credit-card"></span>
+    						Make Reservation
+    					</button>
+    					<button type="button" class="btn btn-lg btn-primary btn-blue">
+    						<span class="glyphicon glyphicon-home"></span>
+    					</button>
+    				</a>
+    			</div>
+  			</div>
+		</div>
+		<br>
+
+		<!-- Section for reservations -->
+		<section class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">Table Victims</h4>
+						</div>
+						<div class="panel-body" id="reservation-victims">
+							<!--
+							<div class="well" id="">
+								<h2>
+									<span class="label label-primary">1</span>
+									 | Matt
+								</h2>
+							</div>
+							-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> <!-- .container-fluid -->
+
+		<!-- Section for reservations -->
+		<section class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">Victims in Waiting</h4>
+						</div>
+						<div class="panel-body" id="wait-victims">
+							<!--
+							<div class="well" id="">
+								<h2>
+									<span class="label label-primary">1</span>
+									 | John
+								</h2>
+							</div>
+							-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section> <!-- .container-fluid -->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<a href="/api/tables"> API Table Link </a> |
+				<a href="/api/waitlist"> API Wait List </a>
+			</div>
+		</div>
+
+		<!-- jQuery library (necessary for Bootstrap & other JavaScript plugins) -->
+   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+   		<!-- Backstretch js plugin, for page background -->
+   		<script src="assets/javascript/backstretch_plugin.min.js"></script>
+
+		<!-- Latest compiled and minified Bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<!-- Custom js code -->
+		<script src="assets/restaurantapp.js"></script>
+
+		<script>
+			$(document).ready(function() {
+
+				var currentURL = window.location.origin;
+
+				// Populate the lists
+				showVictims("tables", "#reservation-victims");
+				showVictims("waitlist", "#wait-victims");
+
+				function showVictims(route, id) {
+					$.get(currentURL + '/api/' + route, function(data) {
+						// console.log('data: ', JSON.stringify(data));
+						if(data) {
+							var html = "";
+							data.forEach(function(obj, index) {
+								var index = index + 1;
+								console.log("This is the object");
+								console.log(obj);
+
+								html += '<div class="well" id="">' +
+											'<h2>' +
+												'<span class="label label-primary">' + index + '</span>' + obj.customerName +
+											'</h2>' +
+										'</div>';
+							});
+							$(id).html(html);
+						}
+					});
+				}
+				/*
+				var currentURL = window.location.origin;
+				$.get(currentURL + '/api/tables', function(data) {
+					console.log('currentURL: ' + currentURL);
+					console.log('data: ' + data);
+					if(data) {
+						var html = "";
+						data.forEach(function(obj, index) {
+							html += '<div class="well" id="">' +
+										'<h2>' +
+											'<span class="label label-primary">' + index + '</span>' + obj.name +
+										'</h2>' +
+									'</div>';
+						});
+						$('#reservation-victims').html(html);
+					}
+				}
+
+				$.get(currentURL + '/api/waitlist', function(data) {
+					console.log('currentURL: ' + currentURL);
+					console.log('data: ' + data);
+					if(data) {
+						var html = "";
+						data.forEach(function(obj, index) {
+							html += '<div class="well" id="">' +
+										'<h2>' +
+											'<span class="label label-primary">' + index + '</span>' + obj.name +
+										'</h2>' +
+									'</div>';
+						});
+						$('#wait-victims').html(html);
+					}
+				}*/
+			});
+		</script>
+	</body>
+</html>

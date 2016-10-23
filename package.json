@@ -1,0 +1,19 @@
+{
+  "name": "13.3",
+  "version": "1.0.0",
+  "description": "restaurant app",
+  "main": "restaurantapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "restaurant",
+    "reservations"
+  ],
+  "author": "The Flippers",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}

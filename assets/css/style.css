@@ -1,0 +1,30 @@
+/* Apply Google font to entire body */
+body {
+	font-family: 'Fjalla One', sans-serif;
+	background-color: #b4dddd;
+}
+
+/* Main game heading styles */
+.jumbotron {
+	font-family: 'Bungee', cursive;
+    margin-bottom: 5px;
+    background: #4aa;
+    color: #000;
+}
+
+/* Center align all text */
+.text-center {
+	text-align: center;
+}
+
+.btn {
+	border-radius: 2px;
+}
+
+.btn-purple {
+	background-color: #aa44aa;
+}
+
+.btn-blue {
+	background-color: #4477aa;
+}

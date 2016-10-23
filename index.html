@@ -1,0 +1,80 @@
+<!--
+ * Program: index.html
+ * Created: 08/19/2016 by Matt Holland
+ * Located: desktop/bootcamp/homework/week-4-game/index.html
+ * Purpose: Provide html structure for 4th assignment - Star Wars RPG
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Star Wars! </title>
+
+		<!-- Include meta viewport tag to give browser instructions on how to control page dimensions/scaling -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Latest Bootstrap compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Customized stylesheet -->
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+		<!-- Google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Anton|Bungee|Fjalla+One|Orbitron|Ravi+Prakash|Russo+One" rel="stylesheet">
+	</head>
+
+	<body>
+		<!-- Big Page Heading -->
+
+		<div class="jumbotron">
+  			<div class="container text-center">
+    			<h1> Flipper Restaurant </h1>
+    			<hr>
+    			<h4>We have 7 tables and only 6 chairs.  You better get on it!</h4>
+    			<br>
+    			<div class="text-center">
+    				<a href="/tables">
+    					<button type="button" class="btn btn-lg btn-primary btn-purple">
+    						<span class="glyphicon glyphicon-list-alt"></span>
+    						View Tables
+    					</button>
+    				</a>
+    				<a href="/reserve">
+    					<button type="button" class="btn btn-lg btn-primary btn-blue">
+    						<span class="glyphicon glyphicon-credit-card"></span>
+    						Make Reservation
+    					</button>
+    				</a>
+    			</div>
+  			</div>
+		</div>
+		<br>
+
+		<!-- Section for main game play.  Note: Content is added and removed via js -->
+		<section class="container-fluid" id="main" style="height: 500px;">
+			<div class="row">
+				<div class="col-sm-12">
+					<a href="/api/tables"> API Table Link </a> |
+					<a href="/api/waitlist"> API Wait List </a>
+				</div>
+			</div>
+		</section> <!-- .container-fluid -->
+
+		<!-- jQuery library (necessary for Bootstrap & other JavaScript plugins) -->
+   		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+   		<!-- Backstretch js plugin, for page background -->
+   		<script src="assets/js/backstretch_plugin.min.js"></script>
+
+		<!-- Latest compiled and minified Bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<!-- Custom js code -->
+		<script src="assets/restaurantapp.js"></script>
+
+		<script>
+			$(document).ready(function() {
+				$('#main').backstretch("assets/img/cust.jpg");
+			});
+		</script>
+	</body>
+</html>
